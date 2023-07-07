@@ -22,7 +22,7 @@ const endGamePage = document.getElementById('gameEndPage');
 const subInitials = document.getElementById('initials');
 const subScore = document.getElementById('submitScore');
 const highScorePage = document.getElementById('Highscores_page');
-const highScoreList = document.getElementById('userScores');
+const highScoreList = document.getElementById('scoreList');
 const returnGame = document.getElementById('goBack');
 const clearHighscores = document.getElementById('clearHigh');
 // const score = document.getElementById("score")
@@ -31,11 +31,12 @@ const ansB = document.getElementById('choiceB');
 const ansC = document.getElementById('choiceC');
 const ansD = document.getElementById('choiceD');
 const checkAnswer = document.getElementById('checkAns')
+const sinScore = document.getElementById('sinScore');
 let secondsLeft = 60;
 let finalScore = document.getElementById('score');
 let timer = document.getElementById('time');
 let questionsLeft = 0;
-let userScores = [];
+let scoreListArr = [];
 let questionIndex = 0;
 let score = secondsLeft
 let initials ="";
@@ -61,7 +62,7 @@ var questions = [
     },
     {
       question: "Which club has the most Premier League Titles?",
-      choices: ["A. Machester City", "B. Machester United", "C. Chelsea", "D. Arsenal"],
+      choices: ["A. Machester City", "B. Manchester United", "C. Chelsea", "D. Arsenal"],
       correctAns: "B. Manchester United",
     },
     {
@@ -80,6 +81,7 @@ function startGame(){
     // action to initialize game
     welcomePage.style.display = "none";
     startQuizPage.style.display = "block";
+    questionIndex = [0];
     startTimer();
     showQuestions();
     // start button disappears
@@ -150,15 +152,12 @@ function guess(event){
     // else -- message that says incorrect, reduce the time by 15 seconds
     // call newQuest function that renews the question on the page
     
-
-
-
-function newQuest(){
-    // presented with new question
-    // presented with new response options
-    // increment the current question number
-    // if you are at the end of the array -endGame function
-}
+// function newQuest(){
+//     // presented with new question
+//     // presented with new response options
+//     // increment the current question number
+//     // if you are at the end of the array -endGame function
+// }
 
 function endGame() {
     clearInterval(timeInterval);
@@ -172,27 +171,68 @@ function endGame() {
     // stop decrementing time left
 }
 
+// function afterSubmit() {
+//     endGamePage.style.display = "none";
+//     highScorePage.style.display = "block";
+
+
+//  // Display high scores
+
+//     }
 function afterSubmit() {
-    endGamePage.style.display = "none";
+    const initialsInput = document.getElementById('initials');
+    const initials = initialsInput.value.trim();
+    if (initials !== "") {
+      const scoreObject = { initials: initials, score: secondsLeft };
+      scoreListArr.push(scoreObject);
+      localStorage.setItem("scores", JSON.stringify(scoreListArr));
+      displayHighScores();
+    }
+  }
+  
+  function displayHighScores() {
     highScorePage.style.display = "block";
-
-    
-    initials = initialsInput.value.trim();
-    if (initials === "") {
-        return;
+    endGamePage.style.display = "none";
+    highScoreList.innerHTML = "";
+    const storedScores = JSON.parse(localStorage.getItem("scores"));
+    if (storedScores !== null && storedScores.length > 0) {
+      scoreListArr = storedScores;
+      scoreListArr.sort((a, b) => b.score - a.score);
+      scoreListArr.forEach(function (score, index) {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${index + 1}. ${score.initials} - ${score.score}`;
+        highScoreList.appendChild(listItem);
+      });
+    } else {
+      const listItem = document.createElement("li");
+      listItem.textContent = "No high scores yet.";
+      highScoreList.appendChild(listItem);
     }
+  }
+  
+  function clearScores() {
+    localStorage.clear();
+    highScoreList.innerHTML = "";
+  }
 
-    const userScore = {
-        initials: initials,
-        score: score,
-      };
-      
-      let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-      highScores.push(userScore);
-      localStorage.setItem("highScores", JSON.stringify(highScores));
-      
-      // Display high scores
+
+    returnGame.addEventListener('click', function () {
+    highScorePage.style.display = "none";
+    welcomePage.style.display = "block";
+    timer.style.display = "block";
+    secondsLeft = 60;
+    timer.textContent = "Time Left: " + secondsLeft + "s";
+});
+
+function showHighScores(){
+    welcomePage.style.display = "none"
+    highScorePage.style.display = "block";
+    if (scoreListArr === null) {
+        sinScore.textContent = "No Scores Yet";
+        
     }
+}
+
 
     // create an edge case -- empty array of scores
     // create score object for localStorage
@@ -208,17 +248,17 @@ function afterSubmit() {
 // THEN I am resented with another question
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches o
+// WHEN all questions are answered or the timer reaches 0
 // THEN the game is over
 // WHEN the game is over
 // THEN I can save my initials and my score the initials and score in the localStorage
 
 
 
-
+highScoreBtn.addEventListener('click', showHighScores)
 startBtn.addEventListener("click", startGame);
 questionOptions.addEventListener('click', guess);
 subScore.addEventListener('click', afterSubmit);
 goBack.addEventListener('click', goBack);
-clearHighscores.addEventListener('click', clearHighscores);
+clearHighscores.addEventListener('click', clearScores);
 

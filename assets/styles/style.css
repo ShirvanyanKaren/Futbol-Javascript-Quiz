@@ -8,8 +8,13 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: rgb(161, 160, 218);
+    /* background-color: rgb(161, 160, 218); */
     color: white;
+
+}
+body {
+  background-image: url(./pitch.jpg);
+ 
 }
 
   .container {
@@ -19,6 +24,7 @@
    justify-content: center;
    align-items: center;
    margin: 0 auto;
+   
   }
   h2{
     font-size: 28px;
@@ -125,6 +131,55 @@
     list-style: none;
   }
   
+ @media screen and (max-width: 768px) {
+      body {
+        display: block;
+        justify-content: center;
+      }
+
+      .container{
+        .container {
+          display: block;
+          justify-content: center;
+          margin-bottom: 5px;
+      }
+  
+}
 
   
+}
+@media screen and (max-width: 600px) {
+  body {
+    display: block;
+    justify-content: center;
+  }
 
+  #gameEndPage {
+  display: block;
+  margin-left: 10rem;
+  }
+  #Highscores_page {
+    display: block;
+    margin-left: 3rem;
+  }
+  #welcomePage {
+    display: block;
+    width: 50%;
+    justify-content: center;
+    margin-right: 10rem;
+  }
+
+#startQuizPage {
+  width: 50%;
+
+}
+
+#questionOptions {
+width: 70%;
+margin-left: 15px ;
+
+}
+#questionList {
+  width: 70%;
+}
+}
