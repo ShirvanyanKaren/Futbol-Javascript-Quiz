@@ -21,7 +21,7 @@ const questionOptions = document.getElementById('questionOptions');
 const endGamePage = document.getElementById('gameEndPage');
 const subInitials = document.getElementById('initials');
 const subScore = document.getElementById('submitScore');
-const highScorePage = document.getElementById('Highscores_Page');
+const highScorePage = document.getElementById('Highscores_page');
 const highScoreList = document.getElementById('userScores');
 const returnGame = document.getElementById('goBack');
 const clearHighscores = document.getElementById('clearHigh');
@@ -164,6 +164,7 @@ function endGame() {
     clearInterval(timeInterval);
     startQuizPage.style.display = "none";
     endGamePage.style.display = "block";
+    timer.style.display = "none";
     document.getElementById("score").textContent = secondsLeft;
     // everything disappears
     // message "all done" - summary text
@@ -172,13 +173,34 @@ function endGame() {
 }
 
 function afterSubmit() {
+    endGamePage.style.display = "none";
+    highScorePage.style.display = "block";
+
+    
+    initials = initialsInput.value.trim();
+    if (initials === "") {
+        return;
+    }
+
+    const userScore = {
+        initials: initials,
+        score: score,
+      };
+      
+      let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+      highScores.push(userScore);
+      localStorage.setItem("highScores", JSON.stringify(highScores));
+      
+      // Display high scores
+    }
+
     // create an edge case -- empty array of scores
     // create score object for localStorage
     // initialField.value for the initials in the score object
     // insert new score into localStorage ! array of objects[(initials: "HCW", score: 23}, (initials: "CL": score: 31}]
     // show high score
     // options to start over and clear high score
-}
+
 
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
