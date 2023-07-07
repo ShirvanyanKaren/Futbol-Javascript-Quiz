@@ -8,31 +8,41 @@
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <div id="timeArea">
+            <p id="time">Time left: 60s</p>
+        </div>
+    </header>
+
+
    <section>
         <div class="container">
             <nav id="welcomePage">
-                <h2>This is a quiz to test your knowledge on futbol (soccer)</h2>
+                <h2>This is a Quiz to Test Your Futbol Knowledge!</h2>
                 <div><button id="start" >Start Quiz</button></div>
                 <div><button id="highscores">View Highscores</button></div>
                 
             </nav>
-            
-        <div id="startQuizPage">
-                
-                
-            </div>
+        <div id="startQuizPage"> </div>
             <section>
             <div id="quizBoxPage">
                 <div id ="questionList">
                 <!-- insert questions here -->
                 </div>
-                <div id="questionOptions">
+                <div>
                     <!-- insert question options here -->
+                <ul id="questionOptions">
+                    <li><button id="choiceA"></button></li>
+                    <li><button id="choiceB"></button></li>
+                    <li><button id="choiceC"></button></li>
+                    <li><button id="choiceD"></button></li>
+                </ul>
+                <div><p id="checkAns"></p></div>
                 </div>
             </section>
             <article>
                 <div id="gameEndPage">
-                    <div id="result">Deez Nuts</div>
+                    <div id="result">Your score is: <span id="socre">0</span></div>
                     <input type="text" placeholder="Enter you initials here" name="intials" id="initials"/>
                     <button id="submitScore">Submit Your Score</button>
                 </div>
