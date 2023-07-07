@@ -25,13 +25,14 @@ const highScorePage = document.getElementById('Highscores_page');
 const highScoreList = document.getElementById('scoreList');
 const returnGame = document.getElementById('goBack');
 const clearHighscores = document.getElementById('clearHigh');
+const scoreList = document.getElementById('scoreList');
 // const score = document.getElementById("score")
 const ansA = document.getElementById('choiceA');
 const ansB = document.getElementById('choiceB');
 const ansC = document.getElementById('choiceC');
 const ansD = document.getElementById('choiceD');
 const checkAnswer = document.getElementById('checkAns')
-const sinScore = document.getElementById('sinScore');
+const noScore = document.getElementById('sinScore');
 let secondsLeft = 60;
 let finalScore = document.getElementById('score');
 let timer = document.getElementById('time');
@@ -204,15 +205,15 @@ function afterSubmit() {
         highScoreList.appendChild(listItem);
       });
     } else {
-      const listItem = document.createElement("li");
-      listItem.textContent = "No high scores yet.";
-      highScoreList.appendChild(listItem);
+    //   const listItem = document.createElement("li");
+      noScore.textContent = "No high scores yet.";
     }
   }
   
   function clearScores() {
     localStorage.clear();
-    highScoreList.innerHTML = "";
+    highScoreList.innerHTML = "No Scores Yet";
+    // noScore.textContent = "No Scores Yet";
   }
 
 
@@ -227,11 +228,12 @@ function afterSubmit() {
 function showHighScores(){
     welcomePage.style.display = "none"
     highScorePage.style.display = "block";
-    if (scoreListArr === null) {
-        sinScore.textContent = "No Scores Yet";
-        
+    if (scoreListArr = []) {
+        noScore.textContent = "No Scores Yet";
+        console.log(scoreListArr)
     }
 }
+
 
 
     // create an edge case -- empty array of scores
