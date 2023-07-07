@@ -25,6 +25,7 @@ const highScorePage = document.getElementById('Highscores_Page');
 const highScoreList = document.getElementById('userScores');
 const returnGame = document.getElementById('goBack');
 const clearHighscores = document.getElementById('clearHigh');
+// const score = document.getElementById("score")
 const ansA = document.getElementById('choiceA');
 const ansB = document.getElementById('choiceB');
 const ansC = document.getElementById('choiceC');
@@ -36,7 +37,7 @@ let timer = document.getElementById('time');
 let questionsLeft = 0;
 let userScores = [];
 let questionIndex = 0;
-let score = 0;
+let score = secondsLeft
 let initials ="";
 let timeInterval;
 
@@ -131,7 +132,6 @@ function guess(event){
     }
     
     checkAnswerText.style.display = 'block';
-
     setTimeout(function() {
         checkAnswerText.style.display = 'none';
         questionIndex++;
@@ -140,7 +140,7 @@ function guess(event){
         } else {
             endGame();
         }
-    }, 500);
+    }, 300);
 }
 
     // trigerred by an event listener on the options
@@ -162,6 +162,9 @@ function newQuest(){
 
 function endGame() {
     clearInterval(timeInterval);
+    startQuizPage.style.display = "none";
+    endGamePage.style.display = "block";
+    document.getElementById("score").textContent = secondsLeft;
     // everything disappears
     // message "all done" - summary text
     // input field for the initials - eventListener
