@@ -63,7 +63,7 @@ var questions = [
     },
     {
       question: "Which club has the most Premier League Titles?",
-      choices: ["A. Machester City", "B. Manchester United", "C. Chelsea", "D. Arsenal"],
+      choices: ["A. Manchester City", "B. Manchester United", "C. Chelsea", "D. Arsenal"],
       correctAns: "B. Manchester United",
     },
     {
@@ -118,6 +118,12 @@ function showQuestions(){
 }
 
 
+// trigerred by an event listener on the options
+    // what was clicked? event.target -- did the user click the correct answe?
+    // compare what was selected to what is the correct answer
+    // if correct answer -- message that says correct
+    // else -- message that says incorrect, reduce the time by 15 seconds
+    // call newQuest function that renews the question on the page
 function guess(event){
     event.preventDefault();
     const userChoice = event.target.textContent;
@@ -133,7 +139,7 @@ function guess(event){
             endGame();
         }
     }
-    
+    //set Timeout function for delay and correct/incorrect feedback
     checkAnswerText.style.display = 'block';
     setTimeout(function() {
         checkAnswerText.style.display = 'none';
@@ -146,40 +152,14 @@ function guess(event){
     }, 300);
 }
 
-    // trigerred by an event listener on the options
-    // what was clicked? event.target -- did the user click the correct answe?
-    // compare what was selected to what is the correct answer
-    // if correct answer -- message that says correct
-    // else -- message that says incorrect, reduce the time by 15 seconds
-    // call newQuest function that renews the question on the page
-    
-// function newQuest(){
-//     // presented with new question
-//     // presented with new response options
-//     // increment the current question number
-//     // if you are at the end of the array -endGame function
-// }
-
 function endGame() {
     clearInterval(timeInterval);
     startQuizPage.style.display = "none";
     endGamePage.style.display = "block";
     timer.style.display = "none";
     document.getElementById("score").textContent = secondsLeft;
-    // everything disappears
-    // message "all done" - summary text
-    // input field for the initials - eventListener
-    // stop decrementing time left
 }
 
-// function afterSubmit() {
-//     endGamePage.style.display = "none";
-//     highScorePage.style.display = "block";
-
-
-//  // Display high scores
-
-//     }
 function afterSubmit() {
     const initialsInput = document.getElementById('initials');
     const initials = initialsInput.value.trim();
@@ -190,7 +170,11 @@ function afterSubmit() {
       displayHighScores();
     }
   }
-  
+   
+    // create score object for localStorage
+    // insert new score into localStorage ! array of objects[(initials: "HCW", score: 23}, (initials: "CL": score: 31}]
+    // show high score
+    // options to start over and clear high score
   function displayHighScores() {
     highScorePage.style.display = "block";
     endGamePage.style.display = "none";
@@ -210,6 +194,7 @@ function afterSubmit() {
     }
   }
   
+  // create an edge case -- empty array of scores
   function clearScores() {
     localStorage.clear();
     highScoreList.innerHTML = "No Scores Yet";
@@ -236,12 +221,7 @@ function showHighScores(){
 
 
 
-    // create an edge case -- empty array of scores
-    // create score object for localStorage
-    // initialField.value for the initials in the score object
-    // insert new score into localStorage ! array of objects[(initials: "HCW", score: 23}, (initials: "CL": score: 31}]
-    // show high score
-    // options to start over and clear high score
+   
 
 
 // WHEN I click the start button

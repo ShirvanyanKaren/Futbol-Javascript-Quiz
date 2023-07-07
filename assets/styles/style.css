@@ -149,7 +149,19 @@ body {
   
 }
 @media screen and (max-width: 600px) {
+  .container{
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin: 15px;
+
+  }
+
+
+
+
   body {
+    
     display: block;
     justify-content: center;
   }
@@ -160,23 +172,28 @@ body {
   }
   #Highscores_page {
     display: block;
+    display: none;
     margin-left: 3rem;
   }
   #welcomePage {
     display: block;
     width: 50%;
-    justify-content: center;
     margin-right: 10rem;
+    
   }
 
 #startQuizPage {
   width: 50%;
+  display: block;
+  
 
 }
 
 #questionOptions {
 width: 70%;
-margin-left: 15px ;
+display: block;
+
+
 
 }
 #questionList {
