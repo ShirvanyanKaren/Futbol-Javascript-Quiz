@@ -85,11 +85,7 @@ function startGame(){
     questionIndex = [0];
     startTimer();
     showQuestions();
-    // start button disappears
-    // welcome text appears
-    // timer starts
-    // first question appears
-    // response options for first question appears
+
 }
 
 function startTimer(){
@@ -102,8 +98,7 @@ function startTimer(){
         }
     }, 1000);
 }
-    // decrement the time left each second
-    // check if the time is zero, if yes -endGame function
+    
 function showQuestions(){
     const currentQuestion = questions[questionIndex];
     questionList.textContent = currentQuestion.question;
@@ -224,16 +219,7 @@ function showHighScores(){
    
 
 
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
-// WHEN I answer a question
-// THEN I am resented with another question
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and my score the initials and score in the localStorage
+
 
 
 
@@ -244,3 +230,13 @@ subScore.addEventListener('click', afterSubmit);
 goBack.addEventListener('click', goBack);
 clearHighscores.addEventListener('click', clearScores);
 
+// WHEN I click the start button
+// THEN a timer starts and I am presented with a question
+// WHEN I answer a question
+// THEN I am resented with another question
+// WHEN I answer a question incorrectly
+// THEN time is subtracted from the clock
+// WHEN all questions are answered or the timer reaches 0
+// THEN the game is over
+// WHEN the game is over
+// THEN I can save my initials and my score the initials and score in the localStorage
