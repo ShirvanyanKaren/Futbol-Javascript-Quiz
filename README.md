@@ -105,6 +105,7 @@ I added the final touches to the project with the returnGame button and addressi
 
 ## Learning Points
 
+This project taught me a lot about a ton of new concepts like event listeners, object values, and manipulating html elements with java querry selectors. One of the most difficult things to learn and apply in this project was the localStorage. This included learning how to use setItem to store a calue in conjunction with JSON.stringify for nonstring values then using getItem and JSON.parse to return the values once we retrieve them. 
 
 ## Credits
 
@@ -114,7 +115,7 @@ I utilized the following resources for this project.
 * [JSONstringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
 * [Storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
 * [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
-
+* [localStorage.setItem](https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem)
 
 ## License 
 

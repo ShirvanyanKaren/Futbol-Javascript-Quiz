@@ -83,9 +83,9 @@ body {
 
   #gameEndPage {
     display: none;
-    flex-direction: column;
-    align-items: center;
-    margin: 20rem;
+    text-align: center;
+    margin: 10rem;
+    padding: 50px 100px;
 
   }
 
@@ -100,13 +100,14 @@ body {
     /* text: black; */
     border: 2px  --button-color;
     color: black;
-
+    /* margin-left: 20px; */
   }
   #result{
     font-size: 24px;
     margin-bottom: 0 2rem;
     text-align: center;
   }
+ 
 
   #Highscores_page {
     display: none;
@@ -166,10 +167,14 @@ body {
     justify-content: center;
   }
 
-  #gameEndPage {
+  /* #gameEndPage {
   display: block;
-  margin-left: 10rem;
-  }
+  display: none;
+  flex-direction: column;
+  margin: 50px 100px;
+  justify-content: center;
+
+  } */
   #Highscores_page {
     display: block;
     display: none;

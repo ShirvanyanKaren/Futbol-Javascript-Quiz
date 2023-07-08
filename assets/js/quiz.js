@@ -63,7 +63,7 @@ var questions = [
     },
     {
       question: "Which club has the most Premier League Titles?",
-      choices: ["A. Manchester City", "B. Manchester United", "C. Chelsea", "D. Arsenal"],
+      choices: ["A. Machester City", "B. Manchester United", "C. Chelsea", "D. Arsenal"],
       correctAns: "B. Manchester United",
     },
     {
@@ -139,7 +139,7 @@ function guess(event){
             endGame();
         }
     }
-    //set Timeout function for delay and correct/incorrect feedback
+    //set Timeout function for delay and 
     checkAnswerText.style.display = 'block';
     setTimeout(function() {
         checkAnswerText.style.display = 'none';
@@ -157,12 +157,12 @@ function endGame() {
     startQuizPage.style.display = "none";
     endGamePage.style.display = "block";
     timer.style.display = "none";
-    document.getElementById("score").textContent = secondsLeft;
+    finalScore.textContent = secondsLeft;
 }
 
 function afterSubmit() {
-    const initialsInput = document.getElementById('initials');
-    const initials = initialsInput.value.trim();
+    // const initialsInput = document.getElementById('initials');
+    const initials = subInitials.value.trim();
     if (initials !== "") {
       const scoreObject = { initials: initials, score: secondsLeft };
       scoreListArr.push(scoreObject);
